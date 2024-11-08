@@ -1,7 +1,16 @@
+import React from 'react';
+import { SearchProvider } from './context/SearchContext';
+import SearchBar from './components/SearchBar';
+import ImageGallery from './components/ImageGallery';
 
 function App() {
   return (
-    <h1>PicFolio</h1>
+    <SearchProvider>
+    <div className="App">
+      <SearchBar />
+      <ImageGallery />
+    </div>
+  </SearchProvider>
   );
 }
 
