@@ -6,11 +6,11 @@ import ImageGallery from './components/ImageGallery';
 function App() {
   return (
     <SearchProvider>
-    <div className="App">
-      <SearchBar />
-      <ImageGallery />
-    </div>
-  </SearchProvider>
+      <div className="App">
+        <SearchBar />
+        <ImageGallery />
+      </div>
+    </SearchProvider>
   );
 }
 
