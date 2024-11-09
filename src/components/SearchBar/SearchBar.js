@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { SearchContext } from '../context/SearchContext';
+import { SearchContext } from '../../context/SearchContext';
+
+import './styles.css'; 
 
 const SearchBar = () => {
   const { setSearchTerm } = useContext(SearchContext);
@@ -10,7 +12,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    <div className='search-bar'>
       <input
         type="text"
         placeholder="Search for images..."

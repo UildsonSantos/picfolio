@@ -1,0 +1,39 @@
+.gallery {
+  padding: 10px;
+}
+.gallery-swiper {
+  padding: 20px;
+}
+.gallery-swiper img {
+  width: 100%;
+  
+  border-radius: 20px;
+  transition: transform 0.2s;
+}
+
+.gallery-swiper img:hover {
+  transform: scale(1.05);
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+}
+
+@media (min-width: 768px) {
+  .gallery {
+    padding: 20px;
+  }
+  .gallery-swiper {
+    padding: 37px;
+  }
+  .gallery-swiper img {
+    width: 100%;
+    border-radius: 37px;
+    transition: transform 0.2s;
+  }
+
+  .gallery-swiper img:hover {
+    transform: scale(1.1);
+  }
+}

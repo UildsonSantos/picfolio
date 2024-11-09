@@ -1,25 +1,29 @@
 import React, { useContext } from 'react';
-import { SearchContext } from '../context/SearchContext';
+import { SearchContext } from '../../context/SearchContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-
 // import required modules
 import { Pagination } from 'swiper/modules';
+
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+
+import './styles.css'; 
+
 
 const ImageGallery = () => {
   const { images, isLoading, error } = useContext(SearchContext);
 
   return (
     <div className="gallery">
-      {isLoading && <p>Loading images...</p>}
-      {error && <p>{error}</p>}
+      {isLoading && <LoadingSpinner />}
+      {error && <p className='error-message' >{error}</p>}
       {!isLoading && !error && images.length > 0 ? (
         <Swiper
-          spaceBetween={10}
+          spaceBetween={20}
           slidesPerView={1}
           pagination={{
             clickable: true,
@@ -35,11 +39,11 @@ const ImageGallery = () => {
             },
           }}
           modules={[Pagination]}
-          className="mySwiper"
+          className="gallery-swiper"
         >
           {images.map((image) => (
             <SwiperSlide key={image.id} watchSlidesProgress={true}>
-              <img src={image.urls.small} alt={image.alt_description} style={{ width: '100%', borderRadius: '8px' }} />
+              <img src={image.urls.small} alt={image.alt_description}  />
             </SwiperSlide>
           ))}
         </Swiper>
