@@ -7,10 +7,18 @@ const ACCESS_KEY = process.env.REACT_APP_UNSPLASH_ACCESS_KEY;
 export const SearchProvider = ({ children }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [images, setImages] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchImages = async () => {
-          if (!searchTerm) return;
+          if (!searchTerm.trim()) {
+            setError('Please enter a search term.');
+            return;
+          }
+      
+          setIsLoading(true);
+          setError(null);
           try {
             const response = await fetch(`https://api.unsplash.com/search/photos?query=${searchTerm}`, {
               headers: {
@@ -19,8 +27,13 @@ export const SearchProvider = ({ children }) => {
             });
             const data = await response.json();
             setImages(data.results);
+            if (data.results.length === 0) {
+              setError('No results found.');
+            }
           } catch (error) {
-            console.error('Error fetching images:', error);
+            setError('Error fetching images. Please try again later.');
+          }finally {
+            setIsLoading(false); 
           }
         };
     
@@ -28,7 +41,7 @@ export const SearchProvider = ({ children }) => {
       }, [searchTerm]);
 
     return (
-        <SearchContext.Provider value={{ searchTerm, setSearchTerm, images, setImages }}>
+        <SearchContext.Provider value={{ searchTerm, setSearchTerm, images, setImages, isLoading, error }}>
             {children}
         </SearchContext.Provider>
     );

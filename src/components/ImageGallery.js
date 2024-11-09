@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { SearchContext } from '../context/SearchContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -11,16 +11,13 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 
 const ImageGallery = () => {
-  const { images } = useContext(SearchContext);
-
-  // Log to check the content of images
-  useEffect(() => {
-    console.log('Fetched images:', images);
-  }, [images]);
+  const { images, isLoading, error } = useContext(SearchContext);
 
   return (
     <div className="gallery">
-      {images.length > 0 ? (
+      {isLoading && <p>Loading images...</p>}
+      {error && <p>{error}</p>}
+      {!isLoading && !error && images.length > 0 ? (
         <Swiper
           spaceBetween={10}
           slidesPerView={1}
@@ -47,7 +44,7 @@ const ImageGallery = () => {
           ))}
         </Swiper>
       ) : (
-        <p>No images to display</p>
+        <p>Use the search above to find images</p>
       )}
     </div>
   );
