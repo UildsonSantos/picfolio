@@ -4,13 +4,17 @@ import { SearchContext } from '../../context/SearchContext';
 import './styles.css';
 
 const SearchBar = () => {
-  const { setSearchTerm, handleSearch, error } = useContext(SearchContext);
+  const { setSearchTerm, handleSearch, searchError, setSearchError } = useContext(SearchContext);
   const [input, setInput] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchTerm(input);
-    handleSearch();
+    if (input.trim() === '') {
+      setSearchError('Please enter a search term.');
+    } else {
+      setSearchTerm(input);
+      handleSearch();
+    }
   };
 
   return (
@@ -20,10 +24,13 @@ const SearchBar = () => {
           type="text"
           placeholder="Search for images..."
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => {
+            setInput(e.target.value);
+            setSearchError(null);
+          }}
         />
         <button type="submit">Search</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {searchError && <p style={{ color: 'red' }}>{searchError}</p>}
       </form>
     </div>
   );

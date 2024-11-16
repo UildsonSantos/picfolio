@@ -15,12 +15,12 @@ import './styles.css';
 
 
 const ImageGallery = () => {
-  const { images, isLoading } = useContext(SearchContext);
+  const { images, isLoading, imagesNotFoundError } = useContext(SearchContext);
 
   return (
     <div className="gallery">
       {isLoading && <LoadingSpinner />}
-
+      {imagesNotFoundError && <p style={{ color: 'red' }}>{imagesNotFoundError}</p>}
       {!isLoading && images.length > 0 ? (
         <Swiper
           spaceBetween={20}

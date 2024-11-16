@@ -8,7 +8,8 @@ export const SearchProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [searchError, setSearchError] = useState(null);
+  const [imagesNotFoundError, setImagesNotFoundError] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
@@ -16,12 +17,12 @@ export const SearchProvider = ({ children }) => {
       if (!isSearching) return;
 
       if (!searchTerm.trim()) {
-        setError('Please enter a search term.');
+        setSearchError('Please enter a search term.');
         return;
       }
 
       setIsLoading(true);
-      setError(null);
+      setSearchError(null);
       try {
         const response = await fetch(`https://api.unsplash.com/search/photos?query=${searchTerm}`, {
           headers: {
@@ -31,10 +32,10 @@ export const SearchProvider = ({ children }) => {
         const data = await response.json();
         setImages(data.results);
         if (data.results.length === 0) {
-          setError('No results found.');
+          setImagesNotFoundError('No results found.');
         }
       } catch (error) {
-        setError('Error fetching images. Please try again later.');
+        setImagesNotFoundError('Error fetching images. Please try again later.');
       } finally {
         setIsLoading(false);
       }
@@ -48,7 +49,7 @@ export const SearchProvider = ({ children }) => {
   };
 
   return (
-    <SearchContext.Provider value={{ searchTerm, setSearchTerm, images, setImages, isLoading, error, handleSearch }}>
+    <SearchContext.Provider value={{ searchTerm, setSearchTerm, images, setImages, isLoading, searchError, setSearchError, imagesNotFoundError, handleSearch }}>
       {children}
     </SearchContext.Provider>
   );
