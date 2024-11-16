@@ -11,7 +11,7 @@ import { Pagination } from 'swiper/modules';
 
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
-import './styles.css'; 
+import './styles.css';
 
 
 const ImageGallery = () => {
@@ -43,7 +43,7 @@ const ImageGallery = () => {
         >
           {images.map((image) => (
             <SwiperSlide key={image.id} watchSlidesProgress={true}>
-              <img src={image.urls.small} alt={image.alt_description}  />
+              <img src={image.urls.small} alt={image.alt_description} />
             </SwiperSlide>
           ))}
         </Swiper>

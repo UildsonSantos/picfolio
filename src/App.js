@@ -3,7 +3,7 @@ import { SearchProvider } from './context/SearchContext';
 import SearchBar from './components/SearchBar/SearchBar';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 
-import './App.css'; 
+import './App.css';
 
 function App() {
   return (
