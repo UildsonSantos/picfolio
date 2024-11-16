@@ -23,6 +23,7 @@ export const SearchProvider = ({ children }) => {
 
       setIsLoading(true);
       setSearchError(null);
+      setImagesNotFoundError(null);
       try {
         const response = await fetch(`https://api.unsplash.com/search/photos?query=${searchTerm}`, {
           headers: {

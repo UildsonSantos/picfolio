@@ -19,19 +19,26 @@ const SearchBar = () => {
 
   return (
     <div className='search-bar'>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search for images..."
-          value={input}
-          onChange={(e) => {
-            setInput(e.target.value);
-            setSearchError(null);
-          }}
-        />
-        <button type="submit">Search</button>
-        {searchError && <p style={{ color: 'red' }}>{searchError}</p>}
-      </form>
+      <div className="search-container">
+        <h1 className="app-title">PicFolio</h1>
+        <form onSubmit={handleSubmit} className="search-form">
+          <div className="input-container">
+            <input
+              type="text"
+              placeholder="Search for images..."
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                setSearchError(null);
+              }}
+            />
+            {searchError && <p className="error-message">{searchError}</p>}
+          </div>
+          <button type="submit">Search</button>
+
+        </form>
+      </div>
+
     </div>
   );
 };
