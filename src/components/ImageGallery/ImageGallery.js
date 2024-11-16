@@ -15,13 +15,13 @@ import './styles.css';
 
 
 const ImageGallery = () => {
-  const { images, isLoading, error } = useContext(SearchContext);
+  const { images, isLoading } = useContext(SearchContext);
 
   return (
     <div className="gallery">
       {isLoading && <LoadingSpinner />}
-      {error && <p className='error-message' >{error}</p>}
-      {!isLoading && !error && images.length > 0 ? (
+
+      {!isLoading && images.length > 0 ? (
         <Swiper
           spaceBetween={20}
           slidesPerView={1}

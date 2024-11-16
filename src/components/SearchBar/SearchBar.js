@@ -4,22 +4,27 @@ import { SearchContext } from '../../context/SearchContext';
 import './styles.css'; 
 
 const SearchBar = () => {
-  const { setSearchTerm } = useContext(SearchContext);
+  const { setSearchTerm, handleSearch, error } = useContext(SearchContext);
   const [input, setInput] = useState('');
 
-  const handleSearch = () => {
-    setSearchTerm(input);  // Atualiza o termo de busca no contexto
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchTerm(input);
+    handleSearch();
   };
 
   return (
     <div className='search-bar'>
-      <input
-        type="text"
-        placeholder="Search for images..."
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search</button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Search for images..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button type="submit">Search</button>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+      </form>
     </div>
   );
 };

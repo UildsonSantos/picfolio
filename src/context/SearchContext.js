@@ -9,9 +9,12 @@ export const SearchProvider = ({ children }) => {
     const [images, setImages] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [isSearching, setIsSearching] = useState(false);
 
     useEffect(() => {
         const fetchImages = async () => {
+          if (!isSearching) return;
+
           if (!searchTerm.trim()) {
             setError('Please enter a search term.');
             return;
@@ -40,8 +43,12 @@ export const SearchProvider = ({ children }) => {
         fetchImages();
       }, [searchTerm]);
 
+      const handleSearch = () => {
+        setIsSearching(true);
+      };
+
     return (
-        <SearchContext.Provider value={{ searchTerm, setSearchTerm, images, setImages, isLoading, error }}>
+        <SearchContext.Provider value={{ searchTerm, setSearchTerm, images, setImages, isLoading, error, handleSearch }}>
             {children}
         </SearchContext.Provider>
     );
