@@ -48,11 +48,12 @@ const ImageGallery = () => {
                 spaceBetween: 50,
               },
             }}
+            watchSlidesProgress={true}
             modules={[Pagination]}
             className="gallery-swiper"
           >
             {images.map((image) => (
-              <SwiperSlide key={image.id} watchSlidesProgress={true} onClick={() => handleImageClick(image)}>
+              <SwiperSlide key={image.id} onClick={() => handleImageClick(image)}>
                 <img src={image.urls.small} alt={image.alt_description} />
               </SwiperSlide>
             ))}
