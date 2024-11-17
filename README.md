@@ -1,70 +1,104 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# **PicFolio**
 
-In the project directory, you can run:
+PicFolio é uma aplicação de galeria de imagens construída com React, utilizando a API da Unsplash para buscar e exibir imagens de alta qualidade. A interface é responsiva e inclui funcionalidades como busca, exibição de imagens em carrossel, e um modal para visualização ampliada.
 
-### `npm start`
+## **Demonstração**
+- [Link para a Aplicação Online](https://stately-lollipop-78a30a.netlify.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## **Características**
+- Busca por imagens de alta qualidade usando a [Unsplash API](https://unsplash.com/developers).
+- Carrossel de imagens interativo com suporte a múltiplos dispositivos usando **Swiper.js**.
+- Modal para visualização de imagens em tamanho ampliado.
+- Design responsivo e intuitivo.
+- Feedback visual ao usuário para erros e carregamentos.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## **Pré-requisitos**
+Antes de começar, você precisará ter instalado:
+- **Node.js** (v16 ou superior)
+- Gerenciador de pacotes como `npm` ou `yarn`
+- Uma chave de acesso da API do Unsplash
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **Configuração**
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/picfolio.git
+   cd picfolio
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Configure sua chave de acesso da Unsplash API:
+   - Crie um arquivo `.env` na raiz do projeto.
+   - Adicione a variável:
+     ```env
+     REACT_APP_UNSPLASH_ACCESS_KEY=YOUR_UNSPLASH_ACCESS_KEY
+     ```
 
-### `npm run eject`
+4. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm start
+   ```
+   O projeto estará disponível em `http://localhost:3000`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## **Deploy**
+### **Netlify, Vercel ou GitHub Pages**
+- Gere o build de produção:
+  ```bash
+  npm run build
+  ```
+- Siga as instruções para deploy no [Netlify](https://www.netlify.com/), [Vercel](https://vercel.com/) ou [GitHub Pages](https://pages.github.com/).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## **Tecnologias Utilizadas**
+- **React**: Framework JavaScript para construção da interface.
+- **Swiper.js**: Biblioteca para o carrossel de imagens.
+- **Unsplash API**: Fonte de imagens de alta qualidade.
+- **CSS**: Estilização customizada para design responsivo.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## **Como Usar**
+1. Digite um termo no campo de busca e clique em **Search**.
+2. Navegue pelas imagens exibidas no carrossel.
+3. Clique em uma imagem para ampliá-la no modal.
+4. Use o botão de fechar para retornar ao carrossel.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## **Contribuindo**
+Contribuições são bem-vindas! Para contribuir:
+1. Fork este repositório.
+2. Crie uma branch para sua feature:
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Faça commit de suas alterações:
+   ```bash
+   git commit -m "Descrição da feature"
+   ```
+4. Envie para o repositório remoto:
+   ```bash
+   git push origin minha-feature
+   ```
+5. Abra um **Pull Request**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## **Licença**
+Este projeto está sob a licença [MIT License](./LICENSE).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
